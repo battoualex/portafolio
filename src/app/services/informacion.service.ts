@@ -5,7 +5,7 @@ import { Http } from "@angular/http";
 export class InformacionService {
 
   info : any = {};
-  equipo : any = {};
+  equipo : any[] = [];
   paginaLoad : boolean = false;
   aboutLoad : boolean = false;
 

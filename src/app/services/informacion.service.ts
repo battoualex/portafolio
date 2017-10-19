@@ -5,14 +5,29 @@ import { Http } from "@angular/http";
 export class InformacionService {
 
   info : any = {};
-  cargada : boolean = false;
+  equipo : any = {};
+  paginaLoad : boolean = false;
+  aboutLoad : boolean = false;
 
   constructor( public http : Http ) {
+    this.getInfoPagina();
+    this.getInfoAbout();
+  }
+
+  public getInfoPagina()
+  {
     this.http.get("assets/data/info.pagina.json").subscribe( data => {
-      console.log(data.json());
-      this.cargada = true;
+      this.paginaLoad = true;
       this.info = data.json();
-    })
+    });
+  }
+
+  public getInfoAbout()
+  {
+    this.http.get("https://paginaweb-b68ab.firebaseio.com/equipo.json").subscribe( data => {
+      this.aboutLoad = true;
+      this.equipo = data.json();
+    });
   }
 
 }

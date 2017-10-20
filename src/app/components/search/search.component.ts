@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from "@angular/router";
+import { ItemsService }  from "../../services/items.service";
 
 @Component({
   selector: 'app-search',
@@ -6,6 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchComponent {
 
-  constructor() { }
+  key : string = undefined;
+
+  constructor( private route : ActivatedRoute, private _ps : ItemsService ) {
+    route.params.subscribe( parametros => {
+      this.key = parametros['key'];
+
+      _ps.searchProducto( this.key ) ;     
+    });
+  }
 
 }

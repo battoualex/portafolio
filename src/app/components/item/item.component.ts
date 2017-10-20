@@ -14,7 +14,6 @@ export class ItemComponent {
   constructor( private route : ActivatedRoute, private _ps : ItemsService ) {
     route.params.subscribe(parametros => {
       _ps.getProducto(parametros['id']).subscribe( resp => {
-        console.log( resp.json() );
         this.cod = parametros['id'];
         this.producto = resp.json();
       });

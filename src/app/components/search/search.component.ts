@@ -10,11 +10,11 @@ export class SearchComponent {
 
   key : string = undefined;
 
-  constructor( private route : ActivatedRoute, private _ps : ItemsService ) {
+  constructor( private route : ActivatedRoute, public _ps : ItemsService ) {
     route.params.subscribe( parametros => {
       this.key = parametros['key'];
 
-      _ps.searchProducto( this.key ) ;     
+      _ps.searchProducto( this.key ) ;
     });
   }
 

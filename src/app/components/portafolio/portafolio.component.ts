@@ -7,7 +7,7 @@ import { ItemsService }  from "../../services/items.service";
 })
 export class PortafolioComponent {
 
-  constructor ( private _ps : ItemsService ) {
+  constructor ( public _ps : ItemsService ) {
 
   }
 

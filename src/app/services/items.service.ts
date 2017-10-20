@@ -21,9 +21,14 @@ export class ItemsService {
         setTimeout( () => {
           this.loadItems = false;
           this.items = resp.json();
-        }, 1500);        
+        }, 1500);
       });
     }
+  }
+
+  public getProducto(cod : string)
+  {
+    return this.http.get(`https://paginaweb-b68ab.firebaseio.com/productos/${ cod }.json`);
   }
 
 }

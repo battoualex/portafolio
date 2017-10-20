@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute }  from "@angular/router";
+import { ItemsService }  from "../../services/items.service";
 
 @Component({
   selector: 'app-item',
@@ -7,11 +8,16 @@ import { ActivatedRoute }  from "@angular/router";
 })
 export class ItemComponent {
 
-  constructor( private route : ActivatedRoute ) {
+  producto : any = undefined;
+  cod : string = undefined;
+
+  constructor( private route : ActivatedRoute, private _ps : ItemsService ) {
     route.params.subscribe(parametros => {
-      console.log(parametros);
-      console.log(parametros['id']);
-            
+      _ps.getProducto(parametros['id']).subscribe( resp => {
+        console.log( resp.json() );
+        this.cod = parametros['id'];
+        this.producto = resp.json();
+      });
     });
   }
 

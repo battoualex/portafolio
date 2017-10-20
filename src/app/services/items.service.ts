@@ -18,12 +18,11 @@ export class ItemsService {
     {
       this.loadItems = true;
       this.http.get('https://paginaweb-b68ab.firebaseio.com/productos_idx.json').subscribe( resp => {
-
-        console.log(resp.json());
-
-        this.loadItems = false;
-        this.items = resp.json();
-      })
+        setTimeout( () => {
+          this.loadItems = false;
+          this.items = resp.json();
+        }, 1500);        
+      });
     }
   }
 
